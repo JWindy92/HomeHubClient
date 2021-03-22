@@ -13,6 +13,10 @@ app.get('/', (req, res) => {
     res.render('index')
 })
 
+app.get('/add_device', (req, res) => {
+    res.render('add_device')
+})
+
 const server = app.listen(port, () => {
     console.log(`Client Listening at http://localhost:${port}`)
 })

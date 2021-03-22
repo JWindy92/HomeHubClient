@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartHome Client</title>
+</head>
+<body>
+
+    <h1>Add Device</h1>
+
+    <div id="device-form">
+
+        <label for="device-list">Device Type: </label>
+        <select id="device-list">
+            <option>Select Device</option>
+        </select>
+        
+        <label for="device-name">Device Name: </label>
+        <input id="device-name" type="text">
+
+        <label for="mqtt-topic">MQTT Topic: </label>
+        <input id="mqtt-topic" type="text">
+
+        <button id="submit-btn">Save</button>
+        
+    </div>
+    
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="/scripts/add_device.js"></script>
+</body>
+</html>
