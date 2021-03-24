@@ -20,7 +20,7 @@ test_btn.click(() => {
 
 $.get("http://localhost:3001/devices/supported", (data, status) => {
     data.forEach((device_type) => {
-        $("#device-types").append(`<li>${device_type.type} (${device_type.protocol})</li>`)
+        $("#device-types").append(`<li>${device_type.device_type} (${device_type.protocol})</li>`)
     })
     console.log(status)
 })
