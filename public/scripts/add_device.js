@@ -2,7 +2,7 @@ console.log("Add Device")
 
 $.get("http://localhost:3001/devices/supported", (data, status) => {
     data.forEach((device_type) => {
-        $("#device-list").append(`<option>${device_type.type}</option>`)
+        $("#device-list").append(`<option>${device_type.device_type}</option>`)
     })
     console.log(status)
 })
