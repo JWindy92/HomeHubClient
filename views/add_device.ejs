@@ -3,27 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/add_device.css">
     <title>SmartHome Client</title>
 </head>
 <body>
 
-    <h1>Add Device</h1>
+    
+    <div id="container">
 
-    <div id="device-form">
+        <h1>Add Device</h1>
+        <div id="form-container">
 
-        <label for="device-list">Device Type: </label>
-        <select id="device-list">
-            <option>Select Device</option>
-        </select>
+    
+            <div id="device-form">
+                <select id="device-list">
+                    <option>Select Device</option>
+                </select>
+                
+                <div id="none-selected">
+                    <p>No device type selected</p>
+                </div>
+
+                <div id="device-fields">
+                    <div>
+                        <label for="device-name">Device Name: </label>
+                        <input id="device-name" type="text">
+                    </div>
+                    <div>
+                        <label for="mqtt-topic">MQTT Topic: </label>
+                        <input id="mqtt-topic" type="text"> 
+                    </div>
+                </div>
+                
         
-        <label for="device-name">Device Name: </label>
-        <input id="device-name" type="text">
-
-        <label for="mqtt-topic">MQTT Topic: </label>
-        <input id="mqtt-topic" type="text">
-
-        <button id="submit-btn">Save</button>
-        
+                <button id="submit-btn">Save</button>
+            </div>
+            
+            
+        </div>
     </div>
     
 

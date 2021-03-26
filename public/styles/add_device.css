@@ -1,0 +1,57 @@
+body {
+    background-color: #eee;
+}
+
+#container {
+    background-color: #fff;
+    border-radius: 5px;
+    width: 80vw;
+    margin: auto;
+    margin-top: 8vh;
+    padding: 20px 50px 20px 50px;
+}
+
+#container h1 {
+    margin-left: 30px;
+}
+
+#form-container{
+    width: 80%;
+    margin: auto;
+    padding: 50px;
+}
+
+/* #device-form {
+    display: flex;
+    flex-direction: column;
+} */
+
+#none-selected {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    font-size: 20px;
+}
+
+#device-list {
+    width: 200px;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background-color: #eee;
+    font-size: 16px;
+}
+
+#device-list option {
+    height: 30px;
+}
+
+#device-fields {
+    margin-top: 20px;
+}
+
+#submit-btn {
+    width: 80px;
+    height: 30px;
+    font-size: 16px;
+}
