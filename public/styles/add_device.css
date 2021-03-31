@@ -5,7 +5,7 @@ body {
 #container {
     background-color: #fff;
     border-radius: 5px;
-    width: 80vw;
+    width: 55vw;
     margin: auto;
     margin-top: 8vh;
     padding: 20px 50px 20px 50px;
@@ -21,10 +21,43 @@ body {
     padding: 50px;
 }
 
-/* #device-form {
-    display: flex;
-    flex-direction: column;
-} */
+#sonoff-form {
+    display: grid;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 16px;
+    grid-template-columns: 30% auto;
+    grid-gap: 16px;
+}
+
+    #sonoff-form label {
+        grid-column: 1 / 2;
+        padding: 10px;
+        float: right;
+    }
+
+    #sonoff-form input {
+        grid-column: 2 / 3;
+        padding: 10px;
+        font-size: 15px;
+    }
+    /* #device-name {
+        grid-column: 2 / 3;
+        grid-row: 1 / 2;
+    }
+
+    label[for=device-name] {
+        color: red;
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+    }
+
+    label[for=mqtt-topic] {
+        color: blue;
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+    } */
 
 #none-selected {
     display: flex;
@@ -54,4 +87,6 @@ body {
     width: 80px;
     height: 30px;
     font-size: 16px;
+    margin-top: 20px;
+    float: right;
 }

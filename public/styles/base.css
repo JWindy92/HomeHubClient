@@ -4,3 +4,18 @@ body {
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 }
+
+#main-nav {
+    display: flex;
+    padding: 17px;
+    background-color: #fff;
+    border-bottom: 1px solid #bbb;
+}
+
+#main-nav a{
+    margin-left: 30px;
+    color: black;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: none;
+}

@@ -11,23 +11,28 @@
 </head>
 <body>
 
-    
+    <%- include('partials/navbar') %>
+
     <div id="container">
 
-        <h1>Add Device</h1>
+        <h1>New Device</h1>
         <div id="form-container">
 
-    
-            <div id="device-form">
-                <select id="device-list">
-                    <option>Select Device</option>
-                </select>
-                
-                <div id="none-selected">
-                    <p>No device type selected</p>
-                </div>
+            <select id="device-list">
+                <option>Select Device</option>
+            </select>
 
-                <div id="device-fields">
+            <div id="none-selected">
+                <p>No device type selected</p>
+            </div>
+            <div id="sonoff-form">
+
+                    <label for="device-name">Device Name: </label>
+                    <input id="device-name" type="text">
+                    <label for="mqtt-topic">MQTT Topic: </label>
+                    <input id="mqtt-topic" type="text"> 
+
+                <!-- <div id="device-fields">
                     <div>
                         <label for="device-name">Device Name: </label>
                         <input id="device-name" type="text">
@@ -36,12 +41,11 @@
                         <label for="mqtt-topic">MQTT Topic: </label>
                         <input id="mqtt-topic" type="text"> 
                     </div>
-                </div>
+                </div> -->
                 
-        
-                <button id="submit-btn">Save</button>
             </div>
-            
+
+            <button id="submit-btn">Save</button>
             
         </div>
     </div>
