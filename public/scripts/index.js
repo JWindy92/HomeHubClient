@@ -30,7 +30,7 @@ $.get("http://localhost:3001/devices", (data, status) => {
         console.log(device)
         // let dht = new DHT_11(dht_11.name)
         // devices.push(dht)
-        $("#devices").append(`<li id=${device.name}>${device.name} - Type: <span class="type">${device.type}</span></li>`)
+        $("#devices").append(`<li id=${device.name}>${device.name} - Type: <%- include('partials/toggle_round') %><span class="type">${device.type}</span></li>`)
     })
 })
 
