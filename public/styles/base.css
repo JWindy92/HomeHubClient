@@ -12,10 +12,28 @@ body {
     border-bottom: 1px solid #bbb;
 }
 
+#main-nav #logo{
+    font-size: 24px;
+    font-weight: 700;
+}
+
 #main-nav a{
     margin-left: 30px;
     color: black;
-    font-size: 24px;
-    font-weight: 700;
+    font-size: 16px;
     text-decoration: none;
+}
+
+#device-panel { 
+    padding: 5px;
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+}
+
+#simple-switch {
+    border: 1px solid black;
+    margin: 5px;
+    height: 150px;
+    width: 125px;
 }
