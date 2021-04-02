@@ -18,7 +18,6 @@ app.get('/', (req, res) => {
     .then((res) => res.json())
     .then((json) => {
         data['devices'] = json
-        console.log(data);
     }).then(() => {
         res.render('index', data)
     })

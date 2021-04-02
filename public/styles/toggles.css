@@ -1,0 +1,66 @@
+
+.switch {
+    position: relative;
+    display: inline-block;
+    /* Height/Width of the switch */
+    /* Every pixel added to width must be reflected in the translateX parameter */
+    width: 60px;
+    height: 28px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    box-shadow: 0px 0px 3px #ccc;
+    content: "";
+    /* Height and width of the slider "ball" */
+    /* for every 2px added to height/width subtract 1 from left/bottom to keep ball centered*/
+    height: 30px;
+    width: 30px;
+    left: -4px;
+    bottom: -1px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+
+  input:checked + .slider:before {
+    box-shadow: 0px 0px 3px #2196F3;
+    -webkit-transform: translateX(36px);
+    -ms-transform: translateX(36px);
+    transform: translateX(36px);
+  }
+
+  /* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
