@@ -27,12 +27,22 @@ $("#device-list").change(() => {
     }
 })
 
+// TODO: this currently is hardcoded for Sonoff Basic devices, should be dynamic
 $("#submit-btn").click(() => {
-    let data = {
-        "type": $("#device-list").val(),
-        "name": $("#device-name").val(),
-        "topic": $("#mqtt-topic").val()
+    let data = {}
+    let type = $("#device-list").val()
+    if (type == "Sonoff Basic") {
+        data = {
+            "type": $("#device-list").val(),
+            "name": $("#device-name").val(),
+            "topic": $("#mqtt-topic").val(),
+            "state": false,
+            "protocol": "mqtt"
+        }
+    } else {
+        console.log("Device not yet supported, will not save")
     }
+    
     $.post("http://localhost:3001/add_device", data, (res) => {
         if (res.status == 200) {
             window.location.replace('/')

@@ -68,6 +68,37 @@ class Sonoff_Basic{
 
 }
 
+class Yeelight {
+
+    constructor(data) {
+        this.data = data
+        this.id = data._id
+        this.name = data.name
+        this.ip = data.ip
+    }
+
+    render(parent) {
+        this.dom_selector = this.name.split(" ").join("-").toLowerCase()
+        this.display = new Simple_Switch(this.dom_selector, this.name)
+        this.display.init(parent)
+        this.switch = this.display.switch
+        this.switch.change(() => {
+            this.update_state(
+                this.switch.prop("checked"))
+        })
+    }
+
+    handle_update(data) {
+        this.display.set_state(data.state)
+    }
+
+    update_state(state) {
+        this.data.state = state
+        $.post(`http://localhost:3001/devices/?id=${this.id}`, this.data)
+    }
+
+}
+
 class DHT_11 {
 
     constructor(name) {
@@ -84,3 +115,10 @@ class DHT_11 {
     }
 
 }
+
+let DeviceLookup = {
+    "Sonoff Basic": Sonoff_Basic,
+    "Yeelight": Yeelight
+}
+
+

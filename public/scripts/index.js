@@ -23,7 +23,9 @@ socket.on('update', (data) => {
 
 $.get("http://localhost:3001/devices", (data, status) => {
     data.forEach((device) => {
-        let dev = new Sonoff_Basic(device)
+        console.log(device)
+        let type = DeviceLookup[device.type]
+        let dev = new type(device)
         // let dht = new DHT_11(dht_11.name)
         devices.push(dev)
         dev.render("#device-panel")
