@@ -1,6 +1,7 @@
 'use strict'
 
 const express = require('express')
+const fetch = require('node-fetch')
 const io = require("socket.io-client")
 const sockets = require("socket.io")
 const port = 3000
@@ -10,7 +11,16 @@ app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
-    res.render('index')
+    let data = {
+        test: "test"
+    }
+    fetch('http://localhost:3001/devices')
+    .then((res) => res.json())
+    .then((json) => {
+        data['devices'] = json
+    }).then(() => {
+        res.render('index', data)
+    })
 })
 
 app.get('/add_device', (req, res) => {
