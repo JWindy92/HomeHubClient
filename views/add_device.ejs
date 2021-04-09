@@ -25,25 +25,24 @@
             <div id="none-selected">
                 <p>No device type selected</p>
             </div>
+
             <div id="sonoff-form">
 
                     <label for="device-name">Device Name: </label>
-                    <input id="device-name" type="text">
+                    <input class="device-name" type="text">
                     <label for="mqtt-topic">MQTT Topic: </label>
-                    <input id="mqtt-topic" type="text"> 
-
-                <!-- <div id="device-fields">
-                    <div>
-                        <label for="device-name">Device Name: </label>
-                        <input id="device-name" type="text">
-                    </div>
-                    <div>
-                        <label for="mqtt-topic">MQTT Topic: </label>
-                        <input id="mqtt-topic" type="text"> 
-                    </div>
-                </div> -->
+                    <input class="mqtt-topic" type="text"> 
                 
             </div>
+
+            <div id="yeelight-form">
+
+                <label for="device-name">Device Name: </label>
+                <input class="device-name" type="text">
+                <label for="addr">IP Address: </label>
+                <input class="addr" type="text"> 
+            
+        </div>
 
             <button id="submit-btn">Save</button>
             

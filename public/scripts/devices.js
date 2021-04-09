@@ -63,7 +63,7 @@ class Sonoff_Basic{
 
     update_state(state) {
         this.data.state = state
-        $.post(`http://localhost:3001/devices/?id=${this.id}`, this.data)
+        $.post(`http://localhost:3001/devices/sonoff?id=${this.id}`, this.data)
     }
 
 }
@@ -83,18 +83,22 @@ class Yeelight {
         this.display.init(parent)
         this.switch = this.display.switch
         this.switch.change(() => {
-            this.update_state(
-                this.switch.prop("checked"))
+            this.data.state.power = this.switch.prop("checked")
+            let msg = {
+                "cmnd": "set_power",
+                "data": this.data
+            }
+            this.update_state(msg)
         })
     }
 
     handle_update(data) {
-        this.display.set_state(data.state)
+        console.log(data.state)
+        this.display.set_state(data.state.power)
     }
 
-    update_state(state) {
-        this.data.state = state
-        $.post(`http://localhost:3001/devices/?id=${this.id}`, this.data)
+    update_state(data) {
+        $.post(`http://localhost:3001/devices/yeelight?id=${this.id}`, data)
     }
 
 }

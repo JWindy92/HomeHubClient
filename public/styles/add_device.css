@@ -59,6 +59,28 @@ body {
         grid-row: 2 / 3;
     } */
 
+#yeelight-form {
+    display: grid;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    padding: 16px;
+    grid-template-columns: 30% auto;
+    grid-gap: 16px;
+}
+
+    #yeelight-form label {
+        grid-column: 1 / 2;
+        padding: 10px;
+        float: right;
+    }
+
+    #yeelight-form input {
+        grid-column: 2 / 3;
+        padding: 10px;
+        font-size: 15px;
+    }
+
 #none-selected {
     display: flex;
     justify-content: center;
