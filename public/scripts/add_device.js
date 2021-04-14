@@ -1,7 +1,18 @@
 
-$("#sonoff-form").hide()
-$("#yeelight-form").hide()
+$(".new-device-form").hide()
 $("#submit-btn").hide()
+
+let value_map = {
+    'Sonoff Basic': "#sonoff-form",
+    'Yeelight': "#yeelight-form"
+}
+
+function show_form(form_id) {
+    $("#none-selected").hide()
+    $(".new-device-form").hide()
+    $(form_id).show()
+    $("#submit-btn").show()
+}
 
 $.get("http://localhost:3001/devices/supported", (data, status) => {
     data.forEach((device_type) => {
@@ -10,26 +21,14 @@ $.get("http://localhost:3001/devices/supported", (data, status) => {
     console.log(status)
 })
 
-// TODO: Will need to make this more maintainable for future expansion
 $("#device-list").change(() => {
     let val = $("#device-list").val()
     if (val == 'Select Device') {
         $("#none-selected").show()
         $("#sonoff-form").hide()
         $("#submit-btn").hide()
-    } else if (val == 'Sonoff Basic') {
-        $("#none-selected").hide()
-        $("#yeelight-form").hide()
-        $("#sonoff-form").show()
-        $("#submit-btn").show()
-    } else if (val == 'Yeelight') {
-        $("#none-selected").hide()
-        $("#sonoff-form").hide()
-        $("#yeelight-form").show()
-        $("#submit-btn").show()
-    } 
-    else {
-        console.log('Device not yet supported')
+    } else {
+        show_form(value_map[val])
     }
 })
 

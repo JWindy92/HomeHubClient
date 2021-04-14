@@ -1,10 +1,11 @@
 class Simple_Switch {
 
-    constructor(id, label) {
-        this.id = "#" + id
+    constructor(device) {
+        this.device = device
+        this.id = "#" + device.id
         this.html = `
-        <div id=${id} class=simple-switch>
-            <p>${label}</p>
+        <div id=${device.id} class=simple-switch>
+            <p>${device.name}</p>
             <label class="switch">
                 <input type="checkbox">
                 <span class="slider round"></span>
@@ -17,6 +18,9 @@ class Simple_Switch {
     init(parent) {
         $(parent).append(this.html)
         this.switch = $(this.id).find('input')
+        this.switch.click(() => {
+            this.toggle()
+        })
     }
 
     set_state(state) {
@@ -24,11 +28,7 @@ class Simple_Switch {
     }
 
     toggle() {
-        if (this.switch.prop('checked')) {
-            this.set_state(false)
-        } else {
-            this.set_state(true)
-        }
+        this.device.toggle(this.switch.prop('checked'))
     }
 
 }
@@ -36,6 +36,7 @@ class Simple_Switch {
 class Sonoff_Basic{
 
     constructor(data) {
+        console.log("Loading Sonoff")
         this.data = data
         this.id = data._id
         this.name = data.name
@@ -48,48 +49,36 @@ class Sonoff_Basic{
 
     render(parent) {
         this.dom_selector = this.name.split(" ").join("-").toLowerCase()
-        this.display = new Simple_Switch(this.dom_selector, this.name)
+        this.display = new Simple_Switch(this)
         this.display.init(parent)
-        this.switch = this.display.switch
-        this.switch.change(() => {
-            this.update_state(
-                this.switch.prop("checked"))
-        })
+        this.display.set_state(this.data.state)
     }
 
     handle_update(data) {
         this.display.set_state(data.state)
     }
 
-    update_state(state) {
+    toggle(state) {
         this.data.state = state
         $.post(`http://localhost:3001/devices/sonoff?id=${this.id}`, this.data)
     }
-
 }
 
 class Yeelight {
 
     constructor(data) {
+        console.log("Loading Yeelight")
         this.data = data
         this.id = data._id
         this.name = data.name
-        this.ip = data.ip
+        this.ip = data.addr
     }
 
     render(parent) {
         this.dom_selector = this.name.split(" ").join("-").toLowerCase()
-        this.display = new Simple_Switch(this.dom_selector, this.name)
+        this.display = new Simple_Switch(this)
         this.display.init(parent)
-        this.switch = this.display.switch
-        this.switch.change(() => {
-            this.data.state.power = this.switch.prop("checked")
-            let msg = {
-                "cmnd": "set_power",
-                "data": this.data
-            }
-            this.update_state(msg)
-        })
+        this.display.set_state(this.data.state.power)
     }
 
     handle_update(data) {
@@ -97,8 +86,13 @@ class Yeelight {
         this.display.set_state(data.state.power)
     }
 
-    update_state(data) {
-        $.post(`http://localhost:3001/devices/yeelight?id=${this.id}`, data)
+    toggle(state) {
+        this.data.state.power = state
+        let msg = {
+            "cmnd": "set_power",
+            "data": this.data
+        }
+        $.post(`http://localhost:3001/devices/yeelight?id=${this.id}`, msg)
     }
 
 }
